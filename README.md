@@ -1,2 +1,2 @@
 # NLPlayStore
-Install, use and uninstall ML models, functions and more.
+Install, use and uninstall Machine Learning models, functions and more.
