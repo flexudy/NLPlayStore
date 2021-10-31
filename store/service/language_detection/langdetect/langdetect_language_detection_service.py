@@ -1,6 +1,7 @@
 from store.service.service import Service as ServiceInterface
 from store.meta.service_types import ServiceType
 from typing import List
+import gradio as gr
 import os
 
 
@@ -23,6 +24,11 @@ class Service(ServiceInterface):
         from langdetect import detect
 
         return detect(text)
+
+    def play_on_screen(self) -> None:
+        interface = gr.Interface(fn=self.play, inputs="text", outputs="text")
+
+        interface.launch()
 
     @staticmethod
     def get_name() -> str:
@@ -60,6 +66,4 @@ class Service(ServiceInterface):
 
     @staticmethod
     def uninstall() -> None:
-        requirements_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
-
-        os.system("pip3 uninstall -r {}".format(requirements_file_path))
+        os.system("pip3 uninstall langdetect")

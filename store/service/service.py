@@ -42,3 +42,6 @@ class Service:
 
     def play(self, **kwargs):
         pass
+
+    def play_on_screen(self) -> None:
+        pass

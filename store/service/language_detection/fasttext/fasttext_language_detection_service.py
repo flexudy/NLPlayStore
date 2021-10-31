@@ -1,11 +1,12 @@
 from store.service.service import Service as ServiceInterface
 from store.meta.service_types import ServiceType
 from typing import List
+import gradio as gr
 import os
 
 
 class Service(ServiceInterface):
-    __NAME = "Fasttext Language Detector"
+    __NAME = "Flexudy-Fasttext-Language-Detector"
 
     __AUTHORS = ["Flexudy Education"]
 
@@ -29,7 +30,18 @@ class Service(ServiceInterface):
                 "Output Language: 'en'"
 
     def play(self, text: str) -> str:
-        return "en"
+        from flexudy_language_detector.start import FlexudyLanguageDetectorFactory
+
+        language_detector = FlexudyLanguageDetectorFactory.get_flexudy_language_detector()
+
+        language = language_detector.get_language(text)
+
+        return language
+
+    def play_on_screen(self) -> None:
+        interface = gr.Interface(fn=self.play, inputs="text", outputs="text")
+
+        interface.launch()
 
     @staticmethod
     def get_name() -> str:
@@ -67,6 +79,4 @@ class Service(ServiceInterface):
 
     @staticmethod
     def uninstall() -> None:
-        requirements_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
-
-        os.system("pip3 uninstall -r {}".format(requirements_file_path))
+        os.system("pip3 uninstall flexudy_language_detector")
