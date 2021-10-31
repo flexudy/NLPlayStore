@@ -5,7 +5,7 @@ import os
 
 
 class Service(ServiceInterface):
-    __NAME = "Fasttext Language Detector"
+    __NAME = "Flexudy-Fasttext-Language-Detector"
 
     __AUTHORS = ["Flexudy Education"]
 
@@ -29,7 +29,13 @@ class Service(ServiceInterface):
                 "Output Language: 'en'"
 
     def play(self, text: str) -> str:
-        return "en"
+        from flexudy_language_detector.start import FlexudyLanguageDetectorFactory
+
+        language_detector = FlexudyLanguageDetectorFactory.get_flexudy_language_detector()
+
+        language = language_detector.get_language(text)
+
+        return language
 
     @staticmethod
     def get_name() -> str:
@@ -67,6 +73,4 @@ class Service(ServiceInterface):
 
     @staticmethod
     def uninstall() -> None:
-        requirements_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
-
-        os.system("pip3 uninstall -r {}".format(requirements_file_path))
+        os.system("pip3 uninstall flexudy_language_detector")

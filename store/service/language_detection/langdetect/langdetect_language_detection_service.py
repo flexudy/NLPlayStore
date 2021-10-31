@@ -60,6 +60,4 @@ class Service(ServiceInterface):
 
     @staticmethod
     def uninstall() -> None:
-        requirements_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
-
-        os.system("pip3 uninstall -r {}".format(requirements_file_path))
+        os.system("pip3 uninstall langdetect")
