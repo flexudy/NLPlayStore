@@ -1,6 +1,9 @@
 # NLPlayStore
 Install, use and uninstall Machine Learning models, functions and more.
 
+# Installation
+pip install git+https://github.com/flexudy/NLPlayStore.git
+
 # Usage
 
 ```python
