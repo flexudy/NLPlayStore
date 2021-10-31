@@ -1,4 +1,5 @@
 from distutils.core import setup
+
 import setuptools
 
 REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()]
