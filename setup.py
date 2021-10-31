@@ -5,7 +5,7 @@ REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()]
 
 setup(
     name='NLPlayStore',
-    version='0.0.1',
+    version='0.0.2',
     packages=setuptools.find_packages(),
     include_package_data=True,
     package_data={'store.service.language_detection.langdetect': ['requirements.txt'],
