@@ -1,6 +1,7 @@
 from store.service.service import Service as ServiceInterface
 from store.meta.service_types import ServiceType
 from typing import List
+import gradio as gr
 import os
 
 
@@ -36,6 +37,11 @@ class Service(ServiceInterface):
         language = language_detector.get_language(text)
 
         return language
+
+    def play_on_screen(self) -> None:
+        interface = gr.Interface(fn=self.play, inputs="text", outputs="text")
+
+        interface.launch()
 
     @staticmethod
     def get_name() -> str:

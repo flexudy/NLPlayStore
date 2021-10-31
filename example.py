@@ -16,7 +16,7 @@ language_detector.install()
 
 language_detector = language_detector.launch()
 
-print(language_detector.play(input_text))
+language_detector.play_on_screen()
 
 # Destroy service you don't need
 language_detector.uninstall()
