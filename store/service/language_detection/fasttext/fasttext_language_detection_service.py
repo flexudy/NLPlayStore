@@ -29,12 +29,13 @@ class Service(ServiceInterface):
     __EXAMPLE = "Input Text: 'The goat is on the tree.'\n" \
                 "Output Language: 'en'"
 
-    def play(self, text: str) -> str:
+    def __init__(self):
         from flexudy_language_detector.start import FlexudyLanguageDetectorFactory
 
-        language_detector = FlexudyLanguageDetectorFactory.get_flexudy_language_detector()
+        self.__language_detector = FlexudyLanguageDetectorFactory.get_flexudy_language_detector()
 
-        language = language_detector.get_language(text)
+    def play(self, text: str) -> str:
+        language = self.__language_detector.get_language(text)
 
         return language
 

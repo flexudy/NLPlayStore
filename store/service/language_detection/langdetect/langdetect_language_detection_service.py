@@ -20,10 +20,13 @@ class Service(ServiceInterface):
     __EXAMPLE = "Input Text: 'The goat is on the tree.'\n" \
                 "Output Language: 'en'"
 
-    def play(self, text: str) -> str:
+    def __init__(self):
         from langdetect import detect
 
-        return detect(text)
+        self.__language_detector = detect
+
+    def play(self, text: str) -> str:
+        return self.__language_detector(text)
 
     def play_on_screen(self) -> None:
         interface = gr.Interface(fn=self.play, inputs="text", outputs="text")
