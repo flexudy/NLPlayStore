@@ -1,8 +1,10 @@
-from store.service.service import Service as ServiceInterface
-from store.meta.service_types import ServiceType
-from typing import List
-import gradio as gr
 import os
+from typing import List
+
+import gradio as gr
+
+from store.meta.service_types import ServiceType
+from store.service.service import Service as ServiceInterface
 
 
 class Service(ServiceInterface):
