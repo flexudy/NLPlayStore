@@ -1,22 +1,16 @@
 from store.service_management import ServiceManager
 
-input_text = "Hello, this is NLPlay. Your favorite store on Github."
+input_text = "Artificial Thermo-Machine Learning is the study of"
 
 service_manager = ServiceManager()
 
-# Get a list of all services available
-services_available = service_manager.get_service_names()
+service = service_manager.get_service("cheapity3")
 
-language_detector = service_manager.get_service("langdetect")
+service.install()
 
-# Feel free to read the description
-service_description = language_detector.get_description()
+service = service.launch()
 
-language_detector.install()
-
-language_detector = language_detector.launch()
-
-language_detector.play_on_screen()
+service.play_on_screen()
 
 # Destroy service you don't need
-language_detector.uninstall()
+service.uninstall()

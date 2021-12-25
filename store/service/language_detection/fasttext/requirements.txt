@@ -1,1 +1,1 @@
-git+https://github.com/flexudy/flexudy-open-language-detector.git@v0.0.1
+git+https://github.com/flexudy/flexudy-open-language-detector.git@v0.0.2
