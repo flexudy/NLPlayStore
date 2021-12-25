@@ -8,7 +8,10 @@ from store.service.text_generation.cheapity3.cheapity3_text_generation_service i
 
 class ServiceRegistrar:
     SERVICES = {
-        Langdetect.get_name(): {"type": Langdetect.get_type(), "class": Langdetect},
+        Langdetect.get_name(): {
+            "type": Langdetect.get_type(),
+            "class": Langdetect
+        },
         FasttextDetector.get_name(): {
             "type": FasttextDetector.get_type(),
             "class": FasttextDetector,

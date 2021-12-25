@@ -17,6 +17,7 @@ setup(
     license="Apache-2.0 License",
     author="Flexudy Education",
     author_email="support@flexudy.com",
-    description="Install, use and uninstall Machine Learning models, functions and more.",
+    description=
+    "Install, use and uninstall Machine Learning models, functions and more.",
     install_requires=REQUIREMENTS,
 )

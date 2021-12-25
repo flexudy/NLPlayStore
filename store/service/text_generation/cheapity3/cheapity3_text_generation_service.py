@@ -29,8 +29,7 @@ class Service(ServiceInterface):
 
     def play(self, text: str, num_words_to_generate: int) -> List[str]:
         generated_texts = self.__text_generator.generate_text(
-            text, num_words_to_generate=num_words_to_generate
-        )
+            text, num_words_to_generate=num_words_to_generate)
 
         return generated_texts
 
@@ -46,13 +45,15 @@ class Service(ServiceInterface):
 
     def play_on_screen(self) -> None:
 
-        max_words = gr.inputs.Slider(
-            minimum=1, maximum=64, default=25, step=1, label="Max number of words"
-        )
+        max_words = gr.inputs.Slider(minimum=1,
+                                     maximum=64,
+                                     default=25,
+                                     step=1,
+                                     label="Max number of words")
 
-        interface = gr.Interface(
-            fn=self.play_to_string, inputs=["text", max_words], outputs="text"
-        )
+        interface = gr.Interface(fn=self.play_to_string,
+                                 inputs=["text", max_words],
+                                 outputs="text")
 
         interface.launch()
 
@@ -83,8 +84,7 @@ class Service(ServiceInterface):
     @staticmethod
     def install() -> None:
         requirements_file_path = os.path.join(
-            os.path.dirname(os.path.realpath(__file__)), "requirements.txt"
-        )
+            os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
 
         os.system("pip3 install -r {}".format(requirements_file_path))
 
