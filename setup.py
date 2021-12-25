@@ -6,7 +6,7 @@ REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()]
 
 setup(
     name="NLPlayStore",
-    version="0.0.2",
+    version="0.0.3",
     packages=setuptools.find_packages(),
     include_package_data=True,
     package_data={
