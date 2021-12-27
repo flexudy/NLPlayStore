@@ -1,8 +1,10 @@
-from store.service.service import Service as ServiceInterface
-from store.meta.service_types import ServiceType
-from typing import List
-import gradio as gr
 import os
+from typing import List
+
+import gradio as gr
+
+from store.meta.service_types import ServiceType
+from store.service.service import Service as ServiceInterface
 
 
 class Service(ServiceInterface):
@@ -14,9 +16,11 @@ class Service(ServiceInterface):
 
     __SUPPORTED_LANGUAGES = ["en", "fr", "de"]
 
-    __EXAMPLE = "@param: text: The input text, e.g 'Philosophy is the science of'" \
-                "\n@param: num_words_to_generate: The number of words to generate e.g 10\n" \
-                "@return: List of generated texts e.g ['.. the mind that provides a guide not only of ideas from other disciplines but also of human thought.', '..']"
+    __EXAMPLE = (
+        "@param: text: The input text, e.g 'Philosophy is the science of'"
+        "\n@param: num_words_to_generate: The number of words to generate e.g 10\n"
+        "@return: List of generated texts e.g ['.. the mind that provides a guide not only of ideas from other disciplines but also of human thought.', '..']"
+    )
 
     def __init__(self):
         from cheapity3.start import TextGeneratorFactory
@@ -24,7 +28,8 @@ class Service(ServiceInterface):
         self.__text_generator = TextGeneratorFactory.get_text_generator()
 
     def play(self, text: str, num_words_to_generate: int) -> List[str]:
-        generated_texts = self.__text_generator.generate_text(text, num_words_to_generate=num_words_to_generate)
+        generated_texts = self.__text_generator.generate_text(
+            text, num_words_to_generate=num_words_to_generate)
 
         return generated_texts
 
@@ -40,9 +45,15 @@ class Service(ServiceInterface):
 
     def play_on_screen(self) -> None:
 
-        max_words = gr.inputs.Slider(minimum=1, maximum=64, default=25, step=1, label="Max number of words")
+        max_words = gr.inputs.Slider(minimum=1,
+                                     maximum=64,
+                                     default=25,
+                                     step=1,
+                                     label="Max number of words")
 
-        interface = gr.Interface(fn=self.play_to_string, inputs=["text", max_words], outputs="text")
+        interface = gr.Interface(fn=self.play_to_string,
+                                 inputs=["text", max_words],
+                                 outputs="text")
 
         interface.launch()
 
@@ -72,7 +83,8 @@ class Service(ServiceInterface):
 
     @staticmethod
     def install() -> None:
-        requirements_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
+        requirements_file_path = os.path.join(
+            os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
 
         os.system("pip3 install -r {}".format(requirements_file_path))
 
