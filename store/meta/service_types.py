@@ -1,9 +1,10 @@
-from enum import Enum, auto
+from enum import auto
+from enum import Enum
 
 
 class ServiceType(Enum):
-    LANGUAGE_DETECTION = auto(),
-    TEXT_GENERATION = auto(),
+    LANGUAGE_DETECTION = (auto(), )
+    TEXT_GENERATION = (auto(), )
 
     @staticmethod
     def from_str(service_type):
