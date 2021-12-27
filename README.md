@@ -35,7 +35,7 @@ language_detector.play_on_screen()
 language_detector.uninstall()
 ```
 
-## Cheapity
+## Cheapity3
 
 ```python
 from store.service_management import ServiceManager
