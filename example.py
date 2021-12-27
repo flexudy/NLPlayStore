@@ -12,5 +12,4 @@ service = service.launch()
 
 service.play_on_screen()
 
-# Destroy service you don't need
 service.uninstall()
