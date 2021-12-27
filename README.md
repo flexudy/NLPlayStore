@@ -34,4 +34,24 @@ language_detector.play_on_screen()
 # Destroy services you don't need
 language_detector.uninstall()
 ```
+
+## Cheapity
+
+```python
+from store.service_management import ServiceManager
+
+input_text = "Artificial Thermo-Machine Learning is the study of"
+
+service_manager = ServiceManager()
+
+service = service_manager.get_service("cheapity3")
+
+service.install()
+
+service = service.launch()
+
+service.play_on_screen()
+
+service.uninstall()
+```
 [<img src="gradio.png" width="500" align="left"/>](Gradio-NLPlay)
